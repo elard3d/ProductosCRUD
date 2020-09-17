@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>LISTA PRODUCTOS</h1>
+
+<br />
+    <a href="/products/create">Crear Producto</a>
+<br />
+<br />
+
+
+<table class="table">
+
+    <thead>
+        <tr style="border-style:solid">
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Proveedor</th>
+            <th>Costo</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @{
+            var products = ((List<Product>)ViewBag.Products);
+        }
+
+        @for (var i = 0; i < products.Count; i++)
+        {
+            var item = products[i];
+
+            <tr style="border-style:solid">
+                <td>@item.id</td>
+                <td>@item.nombre</td>
+                <td>@item.categoria</td>
+                <td>@item.provedor</td>
+                <td>@item.costo</td>
+                <td>
+                    <a href="/products/edit?id=@item.id">Editar</a>
+                </td>
+                <td>
+                    <a href="/products/delete?id=@item.id">Eliminar</a>
+                </td>
+            </tr>
+         }
+    </tbody>
+
+
+</table>
